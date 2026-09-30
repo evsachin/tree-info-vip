@@ -26,7 +26,7 @@ export const trees = [
       cultural: "Regarded as sacred and often planted near village meeting places and temples.",
       wildlife: "Branches and aerial roots give shelter and nesting sites to many birds and insects.",
     },
-    images: ["/images/trees/banyan-1.svg", "/images/trees/banyan.jpg"],
+    images: ["/images/trees/banyan.jpg", "/images/trees/banyan.jpg"],
   },
   {
     id: "TREE-002",
@@ -46,7 +46,7 @@ export const trees = [
       cultural: "In Maharashtra, neem leaves are eaten with jaggery on Gudi Padwa, the new year festival.",
       wildlife: "Fruits are a food source for birds such as parakeets and mynas.",
     },
-    images: ["/images/trees/neem-1.svg", "/images/trees/banyan.jpg"],
+    images: ["/images/trees/banyan.jpg", "/images/trees/banyan.jpg"],
   },
   {
     id: "TREE-003",
@@ -66,7 +66,7 @@ export const trees = [
       cultural: "Sacred in Hinduism and Buddhism. The Bodhi Tree, under which the Buddha attained enlightenment, was a Peepal.",
       wildlife: "Fruit-eating birds help spread its seeds across the neighbourhood.",
     },
-    images: ["/images/trees/peepal-1.svg", "/images/trees/banyan.jpg"],
+    images: ["/images/trees/banyan.jpg", "/images/trees/banyan.jpg"],
   },
   {
     id: "TREE-004",
@@ -86,7 +86,7 @@ export const trees = [
       cultural: "Mango leaves are strung over doorways as toranas during festivals and weddings.",
       wildlife: "Ripe fruit is eaten by birds, bats and squirrels.",
     },
-    images: ["/images/trees/mango-1.svg", "/images/trees/banyan.jpg"],
+    images: ["/images/trees/banyan.jpg", "/images/trees/banyan.jpg"],
   },
   {
     id: "TREE-005",
@@ -106,7 +106,7 @@ export const trees = [
       cultural: "Sacred in Hindu and Buddhist traditions and linked with many temple gardens.",
       wildlife: "Provides shelter and flowers for insects and small birds.",
     },
-    images: ["/images/trees/ashoka-1.svg", "/images/trees/banyan.jpg"],
+    images: ["/images/trees/banyan.jpg", "/images/trees/banyan.jpg"],
   },
 ];
 
