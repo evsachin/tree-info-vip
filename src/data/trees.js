@@ -5,8 +5,8 @@
  * for a different organization or project.
  */
 export const organization = {
-  name: "XYZ COMPANY",
-  headName: "Mr. John Doe",
+  name: "Karve Institute",
+  headName: "Nisha Sachin Manvatkar",
   initiativeName: "CSR INITIATIVE",
   projectName: "OXYGEN PARK PROJECT",
   totalTrees: 800,
