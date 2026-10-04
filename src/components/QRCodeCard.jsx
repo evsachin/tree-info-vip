@@ -1,31 +1,22 @@
 import { useRef } from "react";
 import { QRCodeCanvas } from "qrcode.react";
 import { treeUrl } from "../config.js";
-import { organization } from "../data/trees.js";
 
-// Downloaded image dimensions
 const WIDTH = 1200;
 const HEIGHT = 1450;
 const QR_SIZE = 800;
 
-// Theme colors
 const GREEN = "#075C38";
 const DARK_GREEN = "#06482D";
 const TEXT_GRAY = "#444444";
 const WHITE = "#FFFFFF";
 
-/* ---------------------------------------
-   Rounded Rectangle
---------------------------------------- */
 function roundedRect(ctx, x, y, w, h, r) {
   ctx.beginPath();
   ctx.roundRect(x, y, w, h, r);
   ctx.closePath();
 }
 
-/* ---------------------------------------
-   Centered Text
---------------------------------------- */
 function centerText(ctx, text, x, y, font, color, maxWidth = 950) {
   ctx.font = font;
   ctx.fillStyle = color;
@@ -34,9 +25,6 @@ function centerText(ctx, text, x, y, font, color, maxWidth = 950) {
   ctx.fillText(String(text), x, y, maxWidth);
 }
 
-/* ---------------------------------------
-   Decorative Leaf
---------------------------------------- */
 function drawLeaf(ctx, x, y, size, angle = 0) {
   ctx.save();
 
@@ -46,9 +34,23 @@ function drawLeaf(ctx, x, y, size, angle = 0) {
   ctx.beginPath();
   ctx.moveTo(0, 0);
 
-  ctx.bezierCurveTo(size * 0.5, -size * 0.8, size * 1.1, -size * 0.8, size, 0);
+  ctx.bezierCurveTo(
+    size * 0.5,
+    -size * 0.8,
+    size * 1.1,
+    -size * 0.8,
+    size,
+    0
+  );
 
-  ctx.bezierCurveTo(size * 0.7, size * 0.8, size * 0.2, size * 0.8, 0, 0);
+  ctx.bezierCurveTo(
+    size * 0.7,
+    size * 0.8,
+    size * 0.2,
+    size * 0.8,
+    0,
+    0
+  );
 
   ctx.fillStyle = "#198052";
   ctx.fill();
@@ -63,26 +65,18 @@ function drawLeaf(ctx, x, y, size, angle = 0) {
   ctx.restore();
 }
 
-/* ---------------------------------------
-   Decorative Green Border
---------------------------------------- */
 function drawDecorativeBorder(ctx) {
-  // Left and right leaves
   for (let y = 125; y < HEIGHT - 100; y += 85) {
     drawLeaf(ctx, 68, y, 25, -0.5);
     drawLeaf(ctx, 1132, y, 25, 3.6);
   }
 
-  // Top and bottom leaves
   for (let x = 125; x < WIDTH - 100; x += 85) {
     drawLeaf(ctx, x, 70, 23, 0.5);
     drawLeaf(ctx, x, HEIGHT - 65, 23, -0.5);
   }
 }
 
-/* ---------------------------------------
-   Organization Logo
---------------------------------------- */
 function drawLogo(ctx, x, y) {
   ctx.save();
 
@@ -92,20 +86,28 @@ function drawLogo(ctx, x, y) {
   ctx.lineWidth = 4;
   ctx.stroke();
 
-  // Leaf
   ctx.beginPath();
 
   ctx.moveTo(x - 12, y + 17);
 
-  ctx.quadraticCurveTo(x - 24, y - 13, x + 13, y - 23);
+  ctx.quadraticCurveTo(
+    x - 24,
+    y - 13,
+    x + 13,
+    y - 23
+  );
 
-  ctx.quadraticCurveTo(x + 22, y + 4, x - 12, y + 17);
+  ctx.quadraticCurveTo(
+    x + 22,
+    y + 4,
+    x - 12,
+    y + 17
+  );
 
   ctx.strokeStyle = GREEN;
   ctx.lineWidth = 3;
   ctx.stroke();
 
-  // Leaf vein
   ctx.beginPath();
   ctx.moveTo(x - 12, y + 17);
   ctx.lineTo(x + 12, y - 17);
@@ -114,9 +116,6 @@ function drawLogo(ctx, x, y) {
   ctx.restore();
 }
 
-/* ---------------------------------------
-   Scan Icon
---------------------------------------- */
 function drawScanIcon(ctx, x, y) {
   const size = 45;
 
@@ -125,7 +124,6 @@ function drawScanIcon(ctx, x, y) {
   ctx.strokeStyle = GREEN;
   ctx.lineWidth = 4;
 
-  // Scanner corners
   const corners = [
     [0, 0, 1, 1],
     [size, 0, -1, 1],
@@ -141,13 +139,11 @@ function drawScanIcon(ctx, x, y) {
     ctx.stroke();
   });
 
-  // Phone outline
   roundedRect(ctx, x + 14, y + 8, 18, 29, 4);
 
   ctx.lineWidth = 2;
   ctx.stroke();
 
-  // Phone button
   ctx.beginPath();
   ctx.arc(x + 23, y + 31, 2, 0, Math.PI * 2);
   ctx.fillStyle = GREEN;
@@ -156,17 +152,12 @@ function drawScanIcon(ctx, x, y) {
   ctx.restore();
 }
 
-/* ---------------------------------------
-   QR Code Card Component
---------------------------------------- */
 export default function QRCodeCard({ tree }) {
   const qrRef = useRef(null);
 
   const url = treeUrl(tree);
+  const organization = tree.organization;
 
-  /* ---------------------------------------
-     Download Complete Printable Card
-  --------------------------------------- */
   const download = () => {
     const qrCanvas = qrRef.current?.querySelector("canvas");
 
@@ -186,74 +177,68 @@ export default function QRCodeCard({ tree }) {
 
     const centerX = WIDTH / 2;
 
-    /* -----------------------------------
-       1. Background
-    ----------------------------------- */
     ctx.fillStyle = "#F2F1EC";
     ctx.fillRect(0, 0, WIDTH, HEIGHT);
 
-    /* -----------------------------------
-       2. Outer Green Frame
-    ----------------------------------- */
-    roundedRect(ctx, 45, 45, WIDTH - 90, HEIGHT - 90, 50);
+    roundedRect(
+      ctx,
+      45,
+      45,
+      WIDTH - 90,
+      HEIGHT - 90,
+      50
+    );
 
     ctx.fillStyle = GREEN;
     ctx.fill();
 
-    /* -----------------------------------
-       3. Decorative Leaves
-    ----------------------------------- */
     drawDecorativeBorder(ctx);
 
-    /* -----------------------------------
-       4. White Inner Card
-    ----------------------------------- */
-    roundedRect(ctx, 105, 105, WIDTH - 210, HEIGHT - 210, 42);
+    roundedRect(
+      ctx,
+      105,
+      105,
+      WIDTH - 210,
+      HEIGHT - 210,
+      42
+    );
 
     ctx.fillStyle = WHITE;
     ctx.fill();
-
-    /* -----------------------------------
-       5. Organization Header
-    ----------------------------------- */
 
     drawLogo(ctx, 270, 195);
 
     centerText(
       ctx,
-      organization.name,
+      organization?.name || "",
       centerX + 35,
       175,
       "900 43px Arial",
       DARK_GREEN,
-      650,
+      650
     );
 
     centerText(
       ctx,
-      organization.initiativeName,
+      organization?.initiativeName || "",
       centerX + 35,
       222,
       "900 38px Arial",
       DARK_GREEN,
-      650,
+      650
     );
 
-    /* -----------------------------------
-       6. QR Code
-       Reduced space above QR
-    ----------------------------------- */
-
     const qrDisplaySize = 620;
-
     const qrX = centerX - qrDisplaySize / 2;
-
     const qrY = 260;
-    ctx.drawImage(qrCanvas, qrX, qrY, qrDisplaySize, qrDisplaySize);
 
-    /* -----------------------------------
-       7. Divider
-    ----------------------------------- */
+    ctx.drawImage(
+      qrCanvas,
+      qrX,
+      qrY,
+      qrDisplaySize,
+      qrDisplaySize
+    );
 
     const dividerY = 945;
 
@@ -265,11 +250,14 @@ export default function QRCodeCard({ tree }) {
     ctx.lineWidth = 2;
     ctx.stroke();
 
-    /* -----------------------------------
-       8. Tree Information
-    ----------------------------------- */
-
-    centerText(ctx, "Tree Name:", centerX, 990, "900 32px Arial", DARK_GREEN);
+    centerText(
+      ctx,
+      "Tree Name:",
+      centerX,
+      990,
+      "900 32px Arial",
+      DARK_GREEN
+    );
 
     const localName = tree.localName || tree.commonName;
 
@@ -282,12 +270,8 @@ export default function QRCodeCard({ tree }) {
       1040,
       "900 36px Arial",
       DARK_GREEN,
-      880,
+      880
     );
-
-    /* -----------------------------------
-       9. Tree Number
-    ----------------------------------- */
 
     centerText(
       ctx,
@@ -295,12 +279,8 @@ export default function QRCodeCard({ tree }) {
       centerX,
       1095,
       "bold 32px Arial",
-      TEXT_GRAY,
+      TEXT_GRAY
     );
-
-    /* -----------------------------------
-       10. Scan Instruction
-    ----------------------------------- */
 
     drawScanIcon(ctx, 375, 1135);
 
@@ -310,14 +290,12 @@ export default function QRCodeCard({ tree }) {
       centerX + 30,
       1158,
       "900 29px Arial",
-      DARK_GREEN,
+      DARK_GREEN
     );
 
-    /* -----------------------------------
-       11. Project Footer
-    ----------------------------------- */
-
-    const footerText = `${organization.totalTrees} TREES — ${organization.projectName}`;
+    const footerText = `${organization?.totalTrees || 0} TREES — ${
+      organization?.projectName || ""
+    }`;
 
     centerText(
       ctx,
@@ -326,12 +304,8 @@ export default function QRCodeCard({ tree }) {
       1290,
       "900 23px Arial",
       DARK_GREEN,
-      900,
+      900
     );
-
-    /* -----------------------------------
-       12. Download PNG
-    ----------------------------------- */
 
     const link = document.createElement("a");
 
@@ -342,39 +316,23 @@ export default function QRCodeCard({ tree }) {
     link.click();
   };
 
-  /* ---------------------------------------
-     Component UI
-  --------------------------------------- */
-
   return (
-    <article
-      className="
-        flex flex-col items-center
-        rounded-3xl bg-white
-        p-5 text-center
-        shadow-md shadow-forest/10
-        ring-1 ring-forest/5
-      "
-    >
-      {/* Tree Name */}
-      <h2 className="text-xl font-black text-forest">{tree.commonName}</h2>
+    <article className="flex flex-col items-center rounded-3xl bg-white p-5 text-center shadow-md shadow-forest/10 ring-1 ring-forest/5">
+      <h2 className="text-xl font-black text-forest">
+        {tree.commonName}
+      </h2>
 
-      {/* Tree Number */}
       <p className="font-bold text-ink/60">
         Tree No: {tree.treeNumber || tree.id}
       </p>
 
-      {/* URL */}
-      <p className="mt-2 break-all text-sm font-semibold text-ink/70">{url}</p>
+      <p className="mt-2 break-all text-sm font-semibold text-ink/70">
+        {url}
+      </p>
 
-      {/* QR Code Preview */}
       <div
         ref={qrRef}
-        className="
-          my-5 rounded-2xl
-          border border-forest/10
-          bg-white p-3
-        "
+        className="my-5 rounded-2xl border border-forest/10 bg-white p-3"
       >
         <QRCodeCanvas
           value={url}
@@ -391,18 +349,10 @@ export default function QRCodeCard({ tree }) {
         />
       </div>
 
-      {/* Download Button */}
       <button
         type="button"
         onClick={download}
-        className="
-          min-h-12 w-full
-          rounded-full
-          bg-forest px-5
-          font-black text-white
-          transition-colors
-          hover:bg-moss
-        "
+        className="min-h-12 w-full rounded-full bg-forest px-5 font-black text-white transition-colors hover:bg-moss"
       >
         Download QR Card
       </button>

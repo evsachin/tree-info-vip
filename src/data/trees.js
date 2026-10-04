@@ -1,33 +1,25 @@
 /**
- * Organization / Project Configuration
- *
- * Change these values when using the application
- * for a different organization or project.
- */
-export const organization = {
-  name: "Karve Institute",
-  headName: "Nisha Sachin Manvatkar",
-  initiativeName: "CSR INITIATIVE",
-  projectName: "OXYGEN PARK PROJECT",
-  totalTrees: 800,
-};
-
-/**
  * Tree Data
  *
- * Add new trees by copying an existing object.
- *
- * slug becomes:
- * /tree/<slug>
+ * Each tree contains its own organization/project information.
+ * This allows different trees to belong to different organizations.
  */
 
 export const trees = [
   {
     id: "TREE-001",
     treeNumber: "125",
-
     slug: "banyan-tree",
 
+    // Organization / Project Details
+    organization: {
+      name: "Karve Institute",
+      initiativeName: "CSR INITIATIVE",
+      projectName: "OXYGEN PARK PROJECT",
+      totalTrees: 800,
+    },
+
+    // Tree Details
     commonName: "Banyan Tree",
     localName: "Vad",
     scientificName: "Ficus benghalensis",
@@ -64,14 +56,24 @@ export const trees = [
         "Branches and aerial roots give shelter and nesting sites to many birds and insects.",
     },
 
-    images: ["/images/trees/banyan.jpg", "/images/trees/banyan.jpg"],
+    images: [
+      "/images/trees/banyan.jpg",
+      "/images/trees/banyan.jpg",
+    ],
   },
 
   {
     id: "TREE-002",
     treeNumber: "126",
-
     slug: "peepal-tree",
+
+    // Different organization for this tree
+    organization: {
+      name: "Mrs. Nisha Sachin Manvatkar",
+      initiativeName: "Bhartiya Janta Party",
+      projectName: "URBAN TREE PROJECT",
+      totalTrees: 500,
+    },
 
     commonName: "Peepal Tree",
     localName: "Pimpal",
@@ -96,9 +98,11 @@ export const trees = [
       environmental:
         "A large canopy gives dependable shade and helps keep streets and courtyards cooler.",
 
-      ecological: "Its figs are eaten by birds, bats and other small animals.",
+      ecological:
+        "Its figs are eaten by birds, bats and other small animals.",
 
-      medicinal: "Parts of the tree feature in traditional Ayurvedic practice.",
+      medicinal:
+        "Parts of the tree feature in traditional Ayurvedic practice.",
 
       cultural:
         "Sacred in Hinduism and Buddhism. The Bodhi Tree, under which the Buddha attained enlightenment, was a Peepal.",
@@ -107,14 +111,24 @@ export const trees = [
         "Fruit-eating birds help spread its seeds across the neighbourhood.",
     },
 
-    images: ["/images/trees/peepal.jpg", "/images/trees/peepal.jpg"],
+    images: [
+      "/images/trees/banyan.jpg",
+      "/images/trees/banyan.jpg",
+    ],
   },
 
   {
     id: "TREE-003",
     treeNumber: "127",
-
     slug: "neem-tree",
+
+    // Another organization
+    organization: {
+      name: "TechGreen Pvt Ltd",
+      initiativeName: "CSR TREE INITIATIVE",
+      projectName: "GREEN CAMPUS PROJECT",
+      totalTrees: 300,
+    },
 
     commonName: "Neem Tree",
     localName: "Neem",
@@ -139,25 +153,36 @@ export const trees = [
       environmental:
         "Provides deep shade and stays green through hot, dry months.",
 
-      ecological: "Flowers attract bees, and the fruit is eaten by birds.",
+      ecological:
+        "Flowers attract bees, and the fruit is eaten by birds.",
 
       medicinal:
         "Leaves, bark and oil have a long history of use in traditional medicine.",
 
-      cultural: "Neem has strong cultural importance in many parts of India.",
+      cultural:
+        "Neem has strong cultural importance in many parts of India.",
 
       wildlife:
         "Fruits are a food source for birds such as parakeets and mynas.",
     },
 
-    images: ["/images/trees/neem.jpg", "/images/trees/neem.jpg"],
+    images: [
+      "/images/trees/banyan.jpg",
+      "/images/trees/banyan.jpg",
+    ],
   },
 
   {
     id: "TREE-004",
     treeNumber: "128",
-
     slug: "mango-tree",
+
+    organization: {
+      name: "Green Earth Foundation",
+      initiativeName: "TREE FOR TOMORROW",
+      projectName: "OXYGEN PARK PROJECT",
+      totalTrees: 1000,
+    },
 
     commonName: "Mango Tree",
     localName: "Amba",
@@ -182,24 +207,36 @@ export const trees = [
       environmental:
         "Its thick canopy provides heavy shade, especially valuable in summer.",
 
-      ecological: "Flowers are visited by bees and other pollinating insects.",
+      ecological:
+        "Flowers are visited by bees and other pollinating insects.",
 
-      medicinal: "Leaves and bark have traditional uses in home remedies.",
+      medicinal:
+        "Leaves and bark have traditional uses in home remedies.",
 
       cultural:
         "Mango leaves are used in traditional decorations during festivals and weddings.",
 
-      wildlife: "Ripe fruit is eaten by birds, bats and squirrels.",
+      wildlife:
+        "Ripe fruit is eaten by birds, bats and squirrels.",
     },
 
-    images: ["/images/trees/mango.jpg", "/images/trees/mango.jpg"],
+     images: [
+      "/images/trees/banyan.jpg",
+      "/images/trees/banyan.jpg",
+    ],
   },
 
   {
     id: "TREE-005",
     treeNumber: "129",
-
     slug: "ashoka-tree",
+
+    organization: {
+      name: "Pune Green Initiative",
+      initiativeName: "CSR GREEN PROJECT",
+      projectName: "CITY OXYGEN PROJECT",
+      totalTrees: 650,
+    },
 
     commonName: "Ashoka Tree",
     localName: "Ashoka",
@@ -227,19 +264,25 @@ export const trees = [
       ecological:
         "Its nectar-rich flowers attract butterflies and other pollinators.",
 
-      medicinal: "The bark is used in Ayurveda.",
+      medicinal:
+        "The bark is used in Ayurveda.",
 
       cultural:
         "Sacred in Hindu and Buddhist traditions and linked with many temple gardens.",
 
-      wildlife: "Provides shelter and flowers for insects and small birds.",
+      wildlife:
+        "Provides shelter and flowers for insects and small birds.",
     },
 
-    images: ["/images/trees/ashoka.jpg", "/images/trees/ashoka.jpg"],
+    images: [
+      "/images/trees/banyan.jpg",
+      "/images/trees/banyan.jpg",
+    ],
   },
 ];
 
 /**
  * Find tree using URL slug.
  */
-export const getTreeBySlug = (slug) => trees.find((tree) => tree.slug === slug);
+export const getTreeBySlug = (slug) =>
+  trees.find((tree) => tree.slug === slug);
