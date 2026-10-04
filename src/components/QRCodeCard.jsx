@@ -1,4 +1,3 @@
-
 import { useRef } from "react";
 import { QRCodeCanvas } from "qrcode.react";
 import { treeUrl } from "../config.js";
@@ -27,15 +26,7 @@ function roundedRect(ctx, x, y, w, h, r) {
 /* ---------------------------------------
    Centered Text
 --------------------------------------- */
-function centerText(
-  ctx,
-  text,
-  x,
-  y,
-  font,
-  color,
-  maxWidth = 950
-) {
+function centerText(ctx, text, x, y, font, color, maxWidth = 950) {
   ctx.font = font;
   ctx.fillStyle = color;
   ctx.textAlign = "center";
@@ -55,23 +46,9 @@ function drawLeaf(ctx, x, y, size, angle = 0) {
   ctx.beginPath();
   ctx.moveTo(0, 0);
 
-  ctx.bezierCurveTo(
-    size * 0.5,
-    -size * 0.8,
-    size * 1.1,
-    -size * 0.8,
-    size,
-    0
-  );
+  ctx.bezierCurveTo(size * 0.5, -size * 0.8, size * 1.1, -size * 0.8, size, 0);
 
-  ctx.bezierCurveTo(
-    size * 0.7,
-    size * 0.8,
-    size * 0.2,
-    size * 0.8,
-    0,
-    0
-  );
+  ctx.bezierCurveTo(size * 0.7, size * 0.8, size * 0.2, size * 0.8, 0, 0);
 
   ctx.fillStyle = "#198052";
   ctx.fill();
@@ -120,19 +97,9 @@ function drawLogo(ctx, x, y) {
 
   ctx.moveTo(x - 12, y + 17);
 
-  ctx.quadraticCurveTo(
-    x - 24,
-    y - 13,
-    x + 13,
-    y - 23
-  );
+  ctx.quadraticCurveTo(x - 24, y - 13, x + 13, y - 23);
 
-  ctx.quadraticCurveTo(
-    x + 22,
-    y + 4,
-    x - 12,
-    y + 17
-  );
+  ctx.quadraticCurveTo(x + 22, y + 4, x - 12, y + 17);
 
   ctx.strokeStyle = GREEN;
   ctx.lineWidth = 3;
@@ -175,14 +142,7 @@ function drawScanIcon(ctx, x, y) {
   });
 
   // Phone outline
-  roundedRect(
-    ctx,
-    x + 14,
-    y + 8,
-    18,
-    29,
-    4
-  );
+  roundedRect(ctx, x + 14, y + 8, 18, 29, 4);
 
   ctx.lineWidth = 2;
   ctx.stroke();
@@ -208,8 +168,7 @@ export default function QRCodeCard({ tree }) {
      Download Complete Printable Card
   --------------------------------------- */
   const download = () => {
-    const qrCanvas =
-      qrRef.current?.querySelector("canvas");
+    const qrCanvas = qrRef.current?.querySelector("canvas");
 
     if (!qrCanvas) {
       alert("QR code is not ready.");
@@ -236,14 +195,7 @@ export default function QRCodeCard({ tree }) {
     /* -----------------------------------
        2. Outer Green Frame
     ----------------------------------- */
-    roundedRect(
-      ctx,
-      45,
-      45,
-      WIDTH - 90,
-      HEIGHT - 90,
-      50
-    );
+    roundedRect(ctx, 45, 45, WIDTH - 90, HEIGHT - 90, 50);
 
     ctx.fillStyle = GREEN;
     ctx.fill();
@@ -256,14 +208,7 @@ export default function QRCodeCard({ tree }) {
     /* -----------------------------------
        4. White Inner Card
     ----------------------------------- */
-    roundedRect(
-      ctx,
-      105,
-      105,
-      WIDTH - 210,
-      HEIGHT - 210,
-      42
-    );
+    roundedRect(ctx, 105, 105, WIDTH - 210, HEIGHT - 210, 42);
 
     ctx.fillStyle = WHITE;
     ctx.fill();
@@ -281,7 +226,7 @@ export default function QRCodeCard({ tree }) {
       175,
       "900 43px Arial",
       DARK_GREEN,
-      650
+      650,
     );
 
     centerText(
@@ -291,20 +236,8 @@ export default function QRCodeCard({ tree }) {
       222,
       "900 38px Arial",
       DARK_GREEN,
-      650
+      650,
     );
-
-    // Organization head
-    if (organization.headName) {
-      centerText(
-        ctx,
-        `Head: ${organization.headName}`,
-        centerX,
-        268,
-        "bold 23px Arial",
-        TEXT_GRAY
-      );
-    }
 
     /* -----------------------------------
        6. QR Code
@@ -315,15 +248,8 @@ export default function QRCodeCard({ tree }) {
 
     const qrX = centerX - qrDisplaySize / 2;
 
-    const qrY = organization.headName ? 295 : 260;
-
-    ctx.drawImage(
-      qrCanvas,
-      qrX,
-      qrY,
-      qrDisplaySize,
-      qrDisplaySize
-    );
+    const qrY = 260;
+    ctx.drawImage(qrCanvas, qrX, qrY, qrDisplaySize, qrDisplaySize);
 
     /* -----------------------------------
        7. Divider
@@ -343,20 +269,11 @@ export default function QRCodeCard({ tree }) {
        8. Tree Information
     ----------------------------------- */
 
-    centerText(
-      ctx,
-      "Tree Name:",
-      centerX,
-      990,
-      "900 32px Arial",
-      DARK_GREEN
-    );
+    centerText(ctx, "Tree Name:", centerX, 990, "900 32px Arial", DARK_GREEN);
 
-    const localName =
-      tree.localName || tree.commonName;
+    const localName = tree.localName || tree.commonName;
 
-    const displayName =
-      `${localName} - ${tree.scientificName}`;
+    const displayName = `${localName} - ${tree.scientificName}`;
 
     centerText(
       ctx,
@@ -365,7 +282,7 @@ export default function QRCodeCard({ tree }) {
       1040,
       "900 36px Arial",
       DARK_GREEN,
-      880
+      880,
     );
 
     /* -----------------------------------
@@ -378,7 +295,7 @@ export default function QRCodeCard({ tree }) {
       centerX,
       1095,
       "bold 32px Arial",
-      TEXT_GRAY
+      TEXT_GRAY,
     );
 
     /* -----------------------------------
@@ -393,15 +310,14 @@ export default function QRCodeCard({ tree }) {
       centerX + 30,
       1158,
       "900 29px Arial",
-      DARK_GREEN
+      DARK_GREEN,
     );
 
     /* -----------------------------------
        11. Project Footer
     ----------------------------------- */
 
-    const footerText =
-      `${organization.totalTrees} TREES — ${organization.projectName}`;
+    const footerText = `${organization.totalTrees} TREES — ${organization.projectName}`;
 
     centerText(
       ctx,
@@ -410,7 +326,7 @@ export default function QRCodeCard({ tree }) {
       1290,
       "900 23px Arial",
       DARK_GREEN,
-      900
+      900,
     );
 
     /* -----------------------------------
@@ -419,8 +335,7 @@ export default function QRCodeCard({ tree }) {
 
     const link = document.createElement("a");
 
-    link.download =
-      `${tree.treeNumber || tree.id}-${tree.slug}-qr-card.png`;
+    link.download = `${tree.treeNumber || tree.id}-${tree.slug}-qr-card.png`;
 
     link.href = canvas.toDataURL("image/png");
 
@@ -442,9 +357,7 @@ export default function QRCodeCard({ tree }) {
       "
     >
       {/* Tree Name */}
-      <h2 className="text-xl font-black text-forest">
-        {tree.commonName}
-      </h2>
+      <h2 className="text-xl font-black text-forest">{tree.commonName}</h2>
 
       {/* Tree Number */}
       <p className="font-bold text-ink/60">
@@ -452,9 +365,7 @@ export default function QRCodeCard({ tree }) {
       </p>
 
       {/* URL */}
-      <p className="mt-2 break-all text-sm font-semibold text-ink/70">
-        {url}
-      </p>
+      <p className="mt-2 break-all text-sm font-semibold text-ink/70">{url}</p>
 
       {/* QR Code Preview */}
       <div

@@ -64,10 +64,7 @@ export const trees = [
         "Branches and aerial roots give shelter and nesting sites to many birds and insects.",
     },
 
-    images: [
-      "/images/trees/banyan.jpg",
-      "/images/trees/banyan.jpg",
-    ],
+    images: ["/images/trees/banyan.jpg", "/images/trees/banyan.jpg"],
   },
 
   {
@@ -99,11 +96,9 @@ export const trees = [
       environmental:
         "A large canopy gives dependable shade and helps keep streets and courtyards cooler.",
 
-      ecological:
-        "Its figs are eaten by birds, bats and other small animals.",
+      ecological: "Its figs are eaten by birds, bats and other small animals.",
 
-      medicinal:
-        "Parts of the tree feature in traditional Ayurvedic practice.",
+      medicinal: "Parts of the tree feature in traditional Ayurvedic practice.",
 
       cultural:
         "Sacred in Hinduism and Buddhism. The Bodhi Tree, under which the Buddha attained enlightenment, was a Peepal.",
@@ -112,10 +107,7 @@ export const trees = [
         "Fruit-eating birds help spread its seeds across the neighbourhood.",
     },
 
-    images: [
-      "/images/trees/peepal.jpg",
-      "/images/trees/peepal.jpg",
-    ],
+    images: ["/images/trees/peepal.jpg", "/images/trees/peepal.jpg"],
   },
 
   {
@@ -147,23 +139,18 @@ export const trees = [
       environmental:
         "Provides deep shade and stays green through hot, dry months.",
 
-      ecological:
-        "Flowers attract bees, and the fruit is eaten by birds.",
+      ecological: "Flowers attract bees, and the fruit is eaten by birds.",
 
       medicinal:
         "Leaves, bark and oil have a long history of use in traditional medicine.",
 
-      cultural:
-        "Neem has strong cultural importance in many parts of India.",
+      cultural: "Neem has strong cultural importance in many parts of India.",
 
       wildlife:
         "Fruits are a food source for birds such as parakeets and mynas.",
     },
 
-    images: [
-      "/images/trees/neem.jpg",
-      "/images/trees/neem.jpg",
-    ],
+    images: ["/images/trees/neem.jpg", "/images/trees/neem.jpg"],
   },
 
   {
@@ -195,23 +182,17 @@ export const trees = [
       environmental:
         "Its thick canopy provides heavy shade, especially valuable in summer.",
 
-      ecological:
-        "Flowers are visited by bees and other pollinating insects.",
+      ecological: "Flowers are visited by bees and other pollinating insects.",
 
-      medicinal:
-        "Leaves and bark have traditional uses in home remedies.",
+      medicinal: "Leaves and bark have traditional uses in home remedies.",
 
       cultural:
         "Mango leaves are used in traditional decorations during festivals and weddings.",
 
-      wildlife:
-        "Ripe fruit is eaten by birds, bats and squirrels.",
+      wildlife: "Ripe fruit is eaten by birds, bats and squirrels.",
     },
 
-    images: [
-      "/images/trees/mango.jpg",
-      "/images/trees/mango.jpg",
-    ],
+    images: ["/images/trees/mango.jpg", "/images/trees/mango.jpg"],
   },
 
   {
@@ -246,25 +227,19 @@ export const trees = [
       ecological:
         "Its nectar-rich flowers attract butterflies and other pollinators.",
 
-      medicinal:
-        "The bark is used in Ayurveda.",
+      medicinal: "The bark is used in Ayurveda.",
 
       cultural:
         "Sacred in Hindu and Buddhist traditions and linked with many temple gardens.",
 
-      wildlife:
-        "Provides shelter and flowers for insects and small birds.",
+      wildlife: "Provides shelter and flowers for insects and small birds.",
     },
 
-    images: [
-      "/images/trees/ashoka.jpg",
-      "/images/trees/ashoka.jpg",
-    ],
+    images: ["/images/trees/ashoka.jpg", "/images/trees/ashoka.jpg"],
   },
 ];
 
 /**
  * Find tree using URL slug.
  */
-export const getTreeBySlug = (slug) =>
-  trees.find((tree) => tree.slug === slug);
+export const getTreeBySlug = (slug) => trees.find((tree) => tree.slug === slug);
