@@ -10,11 +10,12 @@ export const trees = [
     id: "TREE-001",
     treeNumber: "125",
     slug: "banyan-tree",
+    //MAYOR  •  SHRI RAVI LANDGE
 
     // Organization / Project Details
     organization: {
-      name: "Karve Institute",
-      initiativeName: "CSR INITIATIVE",
+      name: "MAYOR- SHRI RAVI LANDGE",
+      initiativeName: "Bharatiya Janata Party (BJP)",
       projectName: "OXYGEN PARK PROJECT",
       totalTrees: 800,
     },
@@ -68,11 +69,11 @@ export const trees = [
     slug: "peepal-tree",
 
     // Different organization for this tree
-    organization: {
-      name: "Mrs. Nisha Sachin Manvatkar",
-      initiativeName: "Bhartiya Janta Party",
-      projectName: "URBAN TREE PROJECT",
-      totalTrees: 500,
+   organization: {
+      name: "MAYOR- SHRI RAVI LANDGE",
+      initiativeName: "Bharatiya Janata Party (BJP)",
+      projectName: "OXYGEN PARK PROJECT",
+      totalTrees: 800,
     },
 
     commonName: "Peepal Tree",
@@ -123,11 +124,11 @@ export const trees = [
     slug: "neem-tree",
 
     // Another organization
-    organization: {
-      name: "TechGreen Pvt Ltd",
-      initiativeName: "CSR TREE INITIATIVE",
-      projectName: "GREEN CAMPUS PROJECT",
-      totalTrees: 300,
+     organization: {
+      name: "MAYOR- SHRI RAVI LANDGE",
+      initiativeName: "Bharatiya Janata Party (BJP)",
+      projectName: "OXYGEN PARK PROJECT",
+      totalTrees: 800,
     },
 
     commonName: "Neem Tree",
