@@ -70,7 +70,7 @@ export const trees = [
 
     // Different organization for this tree
    organization: {
-      name: "MAYOR- SHRI RAVI LANDGE",
+      name: "Mrs. Nisha Sachin Manvatkar",
       initiativeName: "Bharatiya Janata Party (BJP)",
       projectName: "OXYGEN PARK PROJECT",
       totalTrees: 800,
