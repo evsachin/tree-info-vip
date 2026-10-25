@@ -234,7 +234,7 @@ export const trees = [
 
     organization: {
       name: "Jija Corporation",
-      initiativeName: "",
+      initiativeName: "Shri building material supplier",
       projectName: "OXYGEN PROJECT",
       totalTrees: 650,
     },
