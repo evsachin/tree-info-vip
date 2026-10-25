@@ -233,9 +233,9 @@ export const trees = [
     slug: "ashoka-tree",
 
     organization: {
-      name: "Pune Green Initiative",
-      initiativeName: "CSR GREEN PROJECT",
-      projectName: "CITY OXYGEN PROJECT",
+      name: "Jija Corporation",
+      initiativeName: "",
+      projectName: "OXYGEN PROJECT",
       totalTrees: 650,
     },
 
